@@ -1,9 +1,9 @@
 import json
 from yookassa import Configuration, Payment
-from storage.config import botUrl
+from storage.config import botUrl, get_value_from_env
 
-YOOKASSA_SHOP_ID = int("")                   # id магазина Юкассы
-YOOKASSA_SECRET_TOKEN = ""                   # секретный токен Юкасса
+YOOKASSA_SHOP_ID = int(get_value_from_env("YOOKASSA_SHOP_ID"))  # id магазина Юкассы
+YOOKASSA_SECRET_TOKEN = get_value_from_env("YOOKASSA_SECRET_TOKEN")  # секретный токен Юкассы
 
 class YOOKassa:
     Configuration.account_id = YOOKASSA_SHOP_ID
