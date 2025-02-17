@@ -18,7 +18,8 @@ async def startcmd(message: types.Message, command: CommandObject):
         referal_inviter_tg_id = get_refer_id(command.args)
         cl.log("Start Handler", "info", f"Registation (ref - {referal_inviter_tg_id})", message.from_user.id)
         fullname = f"{message.from_user.first_name}{' ' + message.from_user.last_name if message.from_user.last_name else ''}"
-        User.get_or_create(message.from_user.id, fullname=fullname, username=message.from_user.username,
+        username = f"{message.from_user.username}"
+        User.get_or_create(message.from_user.id, fullname=fullname, username=username,
                         inviter_id=referal_inviter_tg_id if referal_inviter_tg_id else 0)
     await message.answer('Меню', reply_markup=start_mkp())
 
