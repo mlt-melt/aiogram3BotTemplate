@@ -29,8 +29,17 @@ def to_menu_mpk():
     ]
     return types.InlineKeyboardMarkup(inline_keyboard=btns)
 
+def cancel_mpk():
+    btns = [
+        [types.InlineKeyboardButton(text="Отменить", callback_data="start")],
+    ]
+    return types.InlineKeyboardMarkup(inline_keyboard=btns)
+
 def profile_mpk():
     btns = [
+        [
+            types.InlineKeyboardButton(text="Связаться с разработчиками", callback_data="contact_with_devs")
+        ],
         [
             types.InlineKeyboardButton(text="Вернуться в меню", callback_data="start")
         ],

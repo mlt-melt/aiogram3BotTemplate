@@ -8,3 +8,6 @@ async def tryFinish(state):
 
 class State(StatesGroup):
     State = State()
+
+class ContactWithDevs(StatesGroup):
+    Message = State()
