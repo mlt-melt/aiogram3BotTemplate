@@ -1,5 +1,6 @@
 import asyncio
 from datetime import datetime
+import traceback
 
 from db import User
 from handlers.markups import *
@@ -12,5 +13,5 @@ async def remindsManager():
 
             await asyncio.sleep(30)
         except Exception as ex:
-            cl.log("Reminds Manager", "error", ex)
+            cl.log("Reminds Manager", "error", traceback.format_exc())
             await asyncio.sleep(30)
