@@ -8,3 +8,7 @@ async def tryFinish(state):
 
 class MailingAll(StatesGroup):
     Msg = State()
+
+class MailingUser(StatesGroup):
+    Id = State()
+    Msg = State()
