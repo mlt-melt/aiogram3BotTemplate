@@ -14,12 +14,16 @@ import handlers.chat_join
 async def bot_stopped():
     cl.log("Bot", "critical", f"Bot has been stopped")
 
+async def bot_started():
+    cl.log("Bot", "warning", f"Bot has been started")
+
 async def main():
     tasks = [
         dp.start_polling(bot),
         remindsManager()
     ]
     dp.shutdown.register(bot_stopped)
+    dp.startup.register(bot_started)
     await asyncio.gather(*tasks)
 
 if __name__ == "__main__":
