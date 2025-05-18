@@ -6,6 +6,7 @@ def admin_mpk():
     btns = [
         [types.InlineKeyboardButton(text="Все юзеры", callback_data=f'all_users_1')],
         [types.InlineKeyboardButton(text="Рассылка", callback_data=f'admin_mailing')],
+        [types.InlineKeyboardButton(text="Перезапуск бота", callback_data=f'restart_bot')],
     ]
     return types.InlineKeyboardMarkup(inline_keyboard=btns)
 

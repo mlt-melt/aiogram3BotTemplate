@@ -16,3 +16,5 @@ router = Router()
 
 botUrl = "t.me/"                             # url бота, например t.me/somebot
 admins = []                                  # список ID админов (например - [123456, 7891011, 121314])
+
+systemdServiceName = "some_bot"              # имя сервиса systemd для перезапуска через админ панель, например some_bot

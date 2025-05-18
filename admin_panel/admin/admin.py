@@ -1,9 +1,10 @@
 import datetime
+import os
 from aiogram import types, F
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import Command
 
-from storage.config import dp, admins
+from storage.config import dp, admins, systemdServiceName
 from db import User
 
 from .markups import *
@@ -36,3 +37,9 @@ async def adminUserMenuCall(call: types.CallbackQuery, state: FSMContext):
     user = User.get(tg_id=user_id)
     regDatetime = (user.reg_datetime + datetime.timedelta(hours=3)).strftime("%d/%m/%Y, %H:%M:%S")
     await call.message.edit_text(f"Юзер {user_id}\n{user.fullname} (@{user.username})\nДата регистрации - {regDatetime}", reply_markup=user_admin_mpk(pageNum))
+
+@dp.callback_query(F.data == "restart_bot")
+async def restartBotCall(call: types.CallbackQuery, state: FSMContext):
+    await tryFinish(state)
+    await call.message.answer("Перезапуск бота...")
+    os.system(f'sudo systemctl restart {systemdServiceName}')

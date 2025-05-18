@@ -1,3 +1,4 @@
+import traceback
 from aiogram.fsm.context import FSMContext
 from aiogram import types, F
 
